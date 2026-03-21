@@ -5,6 +5,7 @@ body {
 }
 .top-banner {
   margin: -20px;
+  margin-bottom: 10px;
   width: calc(100% + 40px);
   height: 300px;
   background-image: url("assets/background2.jpg");
@@ -14,6 +15,29 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.top-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.top-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(5px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+.top-banner .title {
+  position: relative;
+  z-index: 1;
+}
+
 
 .title{
   font-size: 80px;
@@ -26,13 +50,40 @@ body {
 
 .column-side {
   flex: 1.5;
-  margin-top: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: 2px solid antiquewhite;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 .column-center {
   flex: 2;
   margin-top: 30px;
+  margin-bottom: auto;
+  border: 2px solid antiquewhite;
+  border-radius: 10px;
+  padding: 15px;
 }
+
+.column-side,
+.column-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-side img {
+  order: -1;
+}
+
+.column-side .dino-name {
+  order: -2;
+}
+
+.column-center img {
+  order: 2;
+}
+
 
 .dino-name {
   color: darkred;
@@ -45,6 +96,12 @@ body {
     1px  1px 0 white;
   text-align: center;
   margin: 10px;
+}
+
+.column-side:hover,
+.column-center:hover {
+  transform: scale(1.01);
+  transition: 0.1s;
 }
 
 h1 {
@@ -79,7 +136,9 @@ img {
 }
 
 .top-dinosaurs {
+  margin-top: 30px;
   margin-bottom: 40px;
+  gap: 20px;
 }
 
 .dino-list {
@@ -88,9 +147,11 @@ img {
   padding: 15px;
   display: flex;
   justify-content: space-between;
-  list-style: none;
+  list-style: disc;
   margin-top: 10px;
   background: #222;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .dino-list li {
@@ -98,6 +159,8 @@ img {
   padding: 10px 15px;
   border-radius: 15px;
   font-weight: bold;
+  flex: 0 0 20%;
+  text-align: center;
 }
 
 .footer {
@@ -147,7 +210,7 @@ img {
   }
 
   .dino-list {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
