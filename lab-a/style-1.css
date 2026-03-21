@@ -57,6 +57,36 @@ img {
   height: 500px;
 }
 
+.article {
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
 
+.article h2 {
+  margin-top: 30px;
+}
+
+.article ul, .article ol {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .column-side, .column-center {
+    margin-top: 20px;
+  }
+}
+
+.footer {
+  margin: -20px;
+  padding: 20px;
+  text-align: center;
+  background: #222;
+  color: white;
+}
 
 
