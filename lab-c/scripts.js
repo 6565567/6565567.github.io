@@ -1,6 +1,6 @@
 let map = L.map('map').setView([53.430127, 14.564802], 18);
 
-//--- biore tutaj inne niz z prezentacji bo musialbym do repo wrzucic leafleta zeby ---
+//--- biore tutaj inne niz z gita bo musialbym do repo wrzucic leafleta zeby ---
 //--- z tej funkcji .provider skorzystac ---
 L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
   {
@@ -23,6 +23,10 @@ document.getElementById("getLocation").addEventListener("click", function() {
     document.getElementById("coords").innerText =
       "Lat: " + lat.toFixed(5) + ", Lon: " + lon.toFixed(5);
     map.setView([lat, lon]);
+    if (marker) {
+      map.removeLayer(marker);
+    }
+    marker = L.marker([lat, lon]).addTo(map)
   });
 });
 
@@ -110,6 +114,7 @@ function checkCorrect(slot, piece) {
   }
   if (correct === GRID * GRID) {
     alert("Puzzle completed!");
+    console.debug("Puzzle completed!");
   }
 }
 
