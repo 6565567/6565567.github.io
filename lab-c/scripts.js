@@ -2,28 +2,17 @@ let map = L.map('map').setView([53.430127, 14.564802], 18);
 
 //--- biore tutaj inne niz z gita bo musialbym do repo wrzucic leafleta zeby ---
 //--- z tej funkcji .provider skorzystac ---
-L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  {
-    maxZoom: 19,
-    attribution: "Tiles © Esri"
-  }
-).addTo(map);
-
+L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}").addTo(map);
 let marker = L.marker([53.430127, 14.564802]).addTo(map);
 
 document.getElementById("getLocation").addEventListener("click", function() {
-  if (!navigator.geolocation) {
-    alert("No geolocation.");
-    return;
-  }
-
   navigator.geolocation.getCurrentPosition(position => {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     document.getElementById("coords").innerText =
       "Lat: " + lat.toFixed(5) + ", Lon: " + lon.toFixed(5);
     map.setView([lat, lon]);
-    if (marker) {
+    if (marker) { //usuwamy stary market, bez tego by byl nowy za kazdy klik na lokalizacje
       map.removeLayer(marker);
     }
     marker = L.marker([lat, lon]).addTo(map)
