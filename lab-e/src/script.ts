@@ -1,6 +1,6 @@
 const styles: Record<string, string> = {
-    style1: "style-1.css",
-    style2: "style-2.css"
+    style1: "public/style-1.css",
+    style2: "public/style-2.css"
 };
 
 let currentStyle: string = "style1";
