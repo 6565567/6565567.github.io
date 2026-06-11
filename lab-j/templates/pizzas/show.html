@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Pizza</h1>
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ pizza.id }}</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>{{ pizza.name }}</td>
+    </tr>
+    <tr>
+        <th>Size</th>
+        <td>{{ pizza.size }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="{{ url_for('pizza_index') }}">back to list</a>
+<a href="{{ url_for('pizza_edit', pizza_id=pizza.id) }}">edit</a>
+
+<form method="post"
+      action="{{ url_for('pizza_delete', pizza_id=pizza.id) }}"
+      onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <button class="btn">Delete</button>
+</form>
+{% endblock %}

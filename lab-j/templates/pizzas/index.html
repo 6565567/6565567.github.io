@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Pizza index</h1>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if pizzas %}
+        {% for pizza in pizzas %}
+            <tr>
+                <td>{{ pizza.id }}</td>
+                <td>{{ pizza.name }}</td>
+                <td>{{ pizza.size }}</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{{ url_for('pizza_show', pizza_id=pizza.id) }}">show</a>
+                    <a class="btn btn-sm btn-warning" href="{{ url_for('pizza_edit', pizza_id=pizza.id) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>
+<a class="btn btn-primary" href="{{ url_for('pizza_new') }}">Create new</a>
+{% endblock %}

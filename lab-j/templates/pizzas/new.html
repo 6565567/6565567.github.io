@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Create new Pizza</h1>
+
+<form method="post" action="{{ url_for('pizza_new') }}">
+    <div>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+    </div>
+
+    <div>
+        <label for="size">Size</label>
+        <input id="size" name="size" type="text" required>
+    </div>
+
+    <button class="btn">Save</button>
+</form>
+
+<a href="{{ url_for('pizza_index') }}">back to list</a>
+{% endblock %}
+
